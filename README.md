@@ -1,4 +1,4 @@
-Practice_HTML5-CSS3
+Practice_Javascript
 -----
 * HTML기초학습
 * CSS기초학습
