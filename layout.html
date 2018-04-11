@@ -1,15 +1,18 @@
-﻿<!DOCTYPE html>
-<html lang="ko">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>이벤트 페이지</title></title>
-    <link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<title>Javascript</title>
+
 </head>
 <body>
-	<h2>What Can Javascript do?</h2>
-	<p>javascript can show hidden HTML elements</p>
-	<p id="demo" style="display:none">Hello Javascript</p>
-	<button type="button" onclick="document.getElementById('demo').style.display='block'">
-		CLick Me!</button>
+	<script type="text/javascript">
+		function myFunction(){
+			document.getElementById("demo").innerHTML="Paragraph Changed";
+		}
+	</script>
+	<h1>Javascript in Head</h1>
+	<p id="demo">A Paragraph</p>
+	<button type="button" name="button" onclick="myFunction()">try it</button>
 </body>
 </html>
