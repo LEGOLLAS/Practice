@@ -1,20 +1,18 @@
 <?
-#변수는 $를 사용한다.
-?>
-<?
-  $a ="hello";
-  print $a;
+  print "당신의 IP 주소는 : ";
+  print getenv("REMOTE_ADDR");
+  print "<br />";
+  print "당신의 호스트 이름은 : ";
+  print gethostbyaddr(getenv("REMOTE_ADDR"));
+  print "<br />";
+  print "당신의 브라우저는 : ";
+  print getenv("HTTP_USER_AGENT");
   print "<br>";
 ?>
 <?
-  print M_PI;
-  print "<br>";
-?>
-<?
-  print PHP_VERSION;
-  print "<br>";
-?>
-<?
-  print PHP_OS;
-  print "<br>"
+    for($i=1; $i<10; $i++){
+      for($j=1; $j<10; $j++){
+      print "*";
+      }
+    }
 ?>
