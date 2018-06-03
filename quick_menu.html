@@ -816,19 +816,19 @@ $(function() {
 #quick_menu ul a:nth-child(4) li span { height: 38%; }
 #quick_menu ul a:nth-child(5) li span { }
 #quick_menu ul a:nth-child(6) li span span { height: 38%;}
-
-
 </style>
 
 
 <script>
-$(function(){
-var currentPosition = parseInt($("#quick_menu").css("top"));
-    $(window).scroll(function() {
-            var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
-            $("#quick_menu").stop().animate({"top":position+currentPosition+"px"},100);
-    });
+$(window).scroll(function(){
+	var scrollTop = $(document).scrollTop();
+	if (scrollTop < 180) {
+	 scrollTop = 200;
+	}
+	$("#quick_menu").stop();
+	$("#quick_menu").animate( { "top" : scrollTop });
 });
+
 </script>
 
 
