@@ -33,3 +33,6 @@ $i = 1;
     // code...
   } while ($i <= 10);
 ?>
+<?
+  db_info.php;
+?>
