@@ -25,8 +25,8 @@ String WebPage = "<!DOCTYPE html>
   <body onload=\"javascript:start();\">
     <div>
       //채팅위해 필요한 텍스트 입력란 생성
-      <input class=\"txd\" type=\"text\" id=\"txbuff\" onkeydown=\"if(event.keyCode==13) enterpressed();\">
-      <input class=\"txd\" type=\"button\" onclick=\"enterpressed();\" value=\"Send\" >
+      <input class=\"text1\" type=\"text\" id=\"textBt\" onkeydown=\"if(event.keyCode==13) enterpressed();\">
+      <input class=\"text1\" type=\"button\" onclick=\"enterpressed();\" value=\"Send\" >
     </div>
     <br>
     <div class=\"Chat\">
@@ -40,18 +40,19 @@ String WebPage = "<!DOCTYPE html>
           Socket = new WebSocket('ws://' + window.location.hostname + ':81/');
          	Socket.onmessage=function(evt){
             //소켓에 메시지를 출력할 떄 나타낼 형식
-            var d = new Date();
-            var ctime = d.getFullYear() + \"-\" + d.getMonth() + \"-\" + d.getDate() + \" \" + d.getHours() + \":\" + d.getMinutes();
+            var date = new Date();
+            var dateTime = date.getFullYear() + \"-\" + date.getMonth() + \"-\" + date.getDate() + \" \" + date.getHours() + \":\" + date.getMinutes();
+            //이벤트 데이터타입이 문자열일 경우 메시지에 dateTime 변수값을 나타내어라.
             if(typeofevent.data === \"string\"){
               console.log(\"123\" + chatArea.innerHTML);
-              chatArea.innerHTML = chatArea.innerHTML + \"<p>\" + \"[\"+ctime+\"]\" + event.data + \"</p>\";
+              chatArea.innerHTML = chatArea.innerHTML + \"<p>\" + \"[\"+dateTime+\"]\" + event.data + \"</p>\";
               chatArea.scrollTop = chatArea.scrollHeight;
               }
             }
           }
         function enterpressed(){
-          Socket.send(document.getElementById(\"txbuff\").value);
-          document.getElementById(\"txbuff\").value=\"\";
+          Socket.send(document.getElementById(\"textBt\").value);
+          document.getElementById(\"textBt\").value=\"\";
           var arr = document.querySelectorAll(\'p\');
           jsonarray = new Object();
           textarray = new Array();
