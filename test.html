@@ -1,0 +1,112 @@
+
+#include <ESP8266WiFi.h>
+#include <WiFiClient.h>
+#include <ESP8266WebServer.h>
+#include <WebSocketsServer.h>
+#include <Hash.h>
+#include <ArduinoJson.h>
+
+//SOFT AP 방식
+
+//IPAddress    nodeMCU_IP(117, 17, 102, 70);  // Defining a static IP address: local & gateway
+//IPAddress    netmask(255, 255, 255, 0);
+//IPAddress    gateway(117, 17, 102, 1);
+//IPAddress    DNSserver(192, 203, 138, 11);
+
+//SOFT AP 방식
+const char* ssid = "iptime-416";
+const char* password = "36500000";
+
+String WebPage = "<!DOCTYPE html>
+<html>
+  <meta charset=\"utf-8\">
+  <style>
+    input[type=\"text\"]{width: 90%; height: 3vh;}
+    input[type=\"button\"]{width: 9%; height: 3.6vh;}
+    .rxd{height: 90vh;}
+    #rxConsole{width: 80%; height: 100%; resize: none; margin:0 auto; }
+  </style>
+  <body onload=\"javascript:start();\">
+    <div>
+      <input class=\"txd\" type=\"text\" id=\"txbuff\" onkeydown=\"if(event.keyCode==13) enterpressed();\"><input class=\"txd\" type=\"button\" onclick=\"enterpressed();\" value=\"Send\" >
+    </div>
+    <br>
+    <div class=\"rxd\">
+     <div id=\"rxConsole\"><p>chat anything</p></div>
+    </div>
+    <script>
+      var Socket;var chatArea=document.getElementById(\"rxConsole\");
+        function start(){
+          Socket=new WebSocket('ws://' + window.location.hostname + ':81/');
+         	Socket.onmessage=function(evt){
+            var d=new Date();
+            var ctime=d.getFullYear() + \"-\" + d.getMonth() + \"-\" + d.getDate() + \" \" + d.getHours() + \":\" + d.getMinutes();
+            if(typeofevent.data===\"string\"){
+              console.log(\"123\"+chatArea.innerHTML);
+              chatArea.innerHTML=chatArea.innerHTML + \"<p>\" + \"[\"+ctime+\"]\" + event.data + \"</p>\";
+              chatArea.scrollTop=chatArea.scrollHeight;
+              }
+            }
+          }
+        function enterpressed(){
+          Socket.send(document.getElementById(\"txbuff\").value);
+          document.getElementById(\"txbuff\").value=\"\";
+          var arr = document.querySelectorAll(\'p\');
+          jsonarray = new Object();
+          textarray = new Array();
+          for (var i = 1; i < arr.length; i++) {
+            textarray[i-1] = arr[i].innerText;
+          }
+          jsonarray[\'text\'] = textarray;console.log(jsonarray);
+        }
+    </script>
+  </body>
+</html>";
+
+WebSocketsServer webSocket = WebSocketsServer(81);
+ESP8266WebServer server(80);
+
+//LOCAL AP 방식
+void setup() {
+  Serial.begin(115200);
+  WiFi.begin(ssid, password);
+  Serial.println("");
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+   }
+    Serial.println("");
+    Serial.print("Connected to ");
+    Serial.println(ssid);
+    Serial.print("IP address: ");
+    Serial.println(WiFi.localIP());
+
+    server.on("/", [](){
+    server.send(200, "text/html", WebPage);
+    });
+
+    server.begin();
+    webSocket.begin();
+    webSocket.onEvent(webSocketEvent);
+}
+void loop() {
+    webSocket.loop();
+    server.handleClient();
+    if (Serial.available() > 0){
+      char c[] = {(char)Serial.read()};
+    }
+}
+void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length){
+   if (type == WStype_TEXT){
+    String allc = "";
+    for(int i = 0; i < length; i++){
+      Serial.print((char) payload[i]);
+      char c[] = {(char) payload[i]};
+      allc = allc+c[i];
+    }
+    // 웹페이지에 출력
+    webSocket.broadcastTXT(allc);
+    Serial.println();
+   }
+}
