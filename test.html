@@ -115,3 +115,41 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
     Serial.println();
    }
 }
+
+
+
+
+
+//온습도
+#include <DHTesp.h>
+#include <ArduinoJson.h>
+
+StaticJsonBuffer<200> jsonBuffer;
+DHTesp dht;
+String jsondata ="";
+JsonObject& root = jsonBuffer.createObject();
+
+void setup()
+{
+  Serial.begin(115200);
+  dht.setup(2); // Connect DHT sensor to GPIO 2
+}
+
+void loop()
+{
+  delay(dht.getMinimumSamplingPeriod());
+  float humidity = dht.getHumidity();
+  float temperature = dht.getTemperature();
+
+  if(!isnan(temperature) || !isnan(humidity)){
+    root["temp"] = temperature;
+    root["humidity"] = humidity;
+    root.printTo(jsondata);
+    Serial.print(dht.getStatusString());
+    Serial.print("\t");
+    Serial.print(humidity, 1);
+    Serial.print("\t\t");
+    Serial.println(temperature, 1);
+    Serial.println(jsondata);
+  }
+}
