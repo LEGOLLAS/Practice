@@ -7,44 +7,45 @@
 #include <ArduinoJson.h>
 
 //SOFT AP 방식
+//연결할 ip주소의 데이터를 설정해준다.
+const char* ip_name = "iptime-416";
+const char* ip_pwd = "36500000";
 
-//IPAddress    nodeMCU_IP(117, 17, 102, 70);  // Defining a static IP address: local & gateway
-//IPAddress    netmask(255, 255, 255, 0);
-//IPAddress    gateway(117, 17, 102, 1);
-//IPAddress    DNSserver(192, 203, 138, 11);
-
-//SOFT AP 방식
-const char* ssid = "iptime-416";
-const char* password = "36500000";
-
+//채팅할 웹페이지 설정
 String WebPage = "<!DOCTYPE html>
 <html>
   <meta charset=\"utf-8\">
+  //채팅위해 필요한 텍스트 입력란 스타일 적용
   <style>
     input[type=\"text\"]{width: 90%; height: 3vh;}
     input[type=\"button\"]{width: 9%; height: 3.6vh;}
-    .rxd{height: 90vh;}
-    #rxConsole{width: 80%; height: 100%; resize: none; margin:0 auto; }
+    .Chat{height: 90vh;}
+    #ChatConsole{width: 80%; height: 100%; resize: none; margin:0 auto; }
   </style>
   <body onload=\"javascript:start();\">
     <div>
-      <input class=\"txd\" type=\"text\" id=\"txbuff\" onkeydown=\"if(event.keyCode==13) enterpressed();\"><input class=\"txd\" type=\"button\" onclick=\"enterpressed();\" value=\"Send\" >
+      //채팅위해 필요한 텍스트 입력란 생성
+      <input class=\"txd\" type=\"text\" id=\"txbuff\" onkeydown=\"if(event.keyCode==13) enterpressed();\">
+      <input class=\"txd\" type=\"button\" onclick=\"enterpressed();\" value=\"Send\" >
     </div>
     <br>
-    <div class=\"rxd\">
-     <div id=\"rxConsole\"><p>chat anything</p></div>
+    <div class=\"Chat\">
+     <div id=\"ChatConsole\"><p>chat anything</p></div>
     </div>
     <script>
-      var Socket;var chatArea=document.getElementById(\"rxConsole\");
+      var Socket;
+      var chatArea = document.getElementById(\"ChatConsole\");
         function start(){
-          Socket=new WebSocket('ws://' + window.location.hostname + ':81/');
+          //웹 소켓 인스턴스를 생성
+          Socket = new WebSocket('ws://' + window.location.hostname + ':81/');
          	Socket.onmessage=function(evt){
-            var d=new Date();
-            var ctime=d.getFullYear() + \"-\" + d.getMonth() + \"-\" + d.getDate() + \" \" + d.getHours() + \":\" + d.getMinutes();
-            if(typeofevent.data===\"string\"){
-              console.log(\"123\"+chatArea.innerHTML);
-              chatArea.innerHTML=chatArea.innerHTML + \"<p>\" + \"[\"+ctime+\"]\" + event.data + \"</p>\";
-              chatArea.scrollTop=chatArea.scrollHeight;
+            //소켓에 메시지를 출력할 떄 나타낼 형식
+            var d = new Date();
+            var ctime = d.getFullYear() + \"-\" + d.getMonth() + \"-\" + d.getDate() + \" \" + d.getHours() + \":\" + d.getMinutes();
+            if(typeofevent.data === \"string\"){
+              console.log(\"123\" + chatArea.innerHTML);
+              chatArea.innerHTML = chatArea.innerHTML + \"<p>\" + \"[\"+ctime+\"]\" + event.data + \"</p>\";
+              chatArea.scrollTop = chatArea.scrollHeight;
               }
             }
           }
@@ -63,13 +64,14 @@ String WebPage = "<!DOCTYPE html>
   </body>
 </html>";
 
+//웹소켓 포트81번으로 정의
 WebSocketsServer webSocket = WebSocketsServer(81);
 ESP8266WebServer server(80);
 
 //LOCAL AP 방식
 void setup() {
   Serial.begin(115200);
-  WiFi.begin(ssid, password);
+  WiFi.begin(ip_name, ip_pwd);
   Serial.println("");
 
   while (WiFi.status() != WL_CONNECTED) {
@@ -78,7 +80,7 @@ void setup() {
    }
     Serial.println("");
     Serial.print("Connected to ");
-    Serial.println(ssid);
+    Serial.println(ip_name);
     Serial.print("IP address: ");
     Serial.println(WiFi.localIP());
 
