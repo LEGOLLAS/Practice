@@ -76,6 +76,7 @@ void setup() {
   WiFi.begin(ip_name, ip_pwd);
   Serial.println("");
 
+  //시리얼 모니터에 연결된 서버정보를 출력할 때 나타날 메시지 설정
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
