@@ -54,6 +54,7 @@ String WebPage = "<!DOCTYPE html>
           Socket.send(document.getElementById(\"textBt\").value);
           document.getElementById(\"textBt\").value=\"\";
           var arr = document.querySelectorAll(\'p\');
+          //Jsonarray, textarray를 생성
           jsonarray = new Object();
           textarray = new Array();
           for (var i = 1; i < arr.length; i++) {
