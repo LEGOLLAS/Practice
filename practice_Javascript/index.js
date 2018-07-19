@@ -1,2 +1,3 @@
-var pi;
-alert("2의 16승의 제곱근의 합은?" pi);
+var pi = 3.1415;
+var radius = 10;
+alert(2*pi*radius);
