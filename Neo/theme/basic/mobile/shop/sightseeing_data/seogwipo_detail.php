@@ -1,75 +1,38 @@
+<style media="screen">
+  a{color: #000000; text-decoration: none;}
+  .head{width: 100%; height: 100px; background-color: black; position: relative;}
+  .datalist{ margin: 10 auto; width: 95%;}
+  #ul{list-style: none; padding: 0;}
+  #back{top:0; margin-left: 10px; position: absolute; width: 30px; height: 50px; z-index: 1; background-image: url('/Neo/theme/basic/img/mobile/back_icon.png'); background-repeat: no-repeat;background-size: 100% 100%;}
+  #choose{width: 100%; height: 40px; margin-top: 15px; margin-bottom: 15px;}
+  #choose li{border-top: 2px solid #e6e6e6; border-bottom: 2px solid #e6e6e6; width: 33%; height: 100%; line-height: 40px; text-align: center; float: left;}
+  #choose li b{color: #FFAE39;}
+</style>
+
 <?php
+include_once('./_common.php');
 
-  $IMG_URL = "/Neo/theme/basic/img/mobile/data-img/food/cafe/";
+define("_INDEX_", TRUE);
 
-  include_once('./_common.php');
-
-  define("_INDEX_", TRUE);
-
-  include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
-
+include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
 ?>
+
 <?php
 $conn = new mysqli("localhost", "jejunulab", "jejunu!!", "jejunulab");
 if($conn->connect_errno){
   print("Connection Error:".$conn->connect_errno);
 }else {
-  $response = $conn->query("select * from `cafe` where name=\"".$_GET["name"]."\"");
+  $response = $conn->query("select * from ` Seogwipo` where name=\"".$_GET["name"]."\"");
   if($response){
     while($row = $response->fetch_assoc()){
-      $imgData = explode(",", $row["image-folder"]);
       ?>
 
       <ul id="ul">
           <li class="datalist">
-
-            <style>
-                ul{
-                  list-style: none outside none;
-                  padding-left: 0;
-                  margin: 0;
-                }
-                .demo .item{
-                  margin-bottom: 60px;
-                }
-                .content-slider li{
-                  background-color: #ed3020;
-                  text-align: center;
-                  color: #FFF;
-                }
-                .content-slider h3 {
-                  margin: 0;
-                  padding: 70px 0;
-                }
-                .demo{
-                  width: 800px;
-                }
-            </style>
-
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-            <script src="/Neo/theme/basic/js/lightslider.js"></script>
-            <link rel="stylesheet" href="/Neo/theme/basic/css/lightslider.css">
-
-            <div class="demo">
-                    <div class="item">
-                        <div class="clearfix" style="width:100%">
-                            <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                                <?php
-                                  for ($i=0; $i < count($imgData); $i++) {
-                                    ?>
-                                    <li data-thumb="<? echo $IMG_URL.$row["forder-name"].'/'.$imgData[$i] ?>">
-                                        <img src="<? echo $IMG_URL.$row["forder-name"].'/'.$imgData[$i] ?>" />
-                                    </li>
-                                    <?php
-                                  }
-                                ?>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             <span style="font-size:20px;"><?php echo $row["name"]?></span>
-            <p style="font-size:11px"><?php echo $row["PhoneNumber"]?></p>
+            <p style="font-size:11px"><?php echo $row["number"]?></p>
             <p style="font-size:11px"><?php echo $row["worktime"]?></p>
+            <p style="font-size:11px"><?php echo $row["price"]?></p>
             <ul id="choose">
               <li><img src="/Neo/theme/basic/img/mobile/heart.jpg" alt="" width="12px" height="12px">&emsp;<b>좋아요</b></li>
               <li style="border-left: 2px solid #e6e6e6; border-right: 2px solid #e6e6e6;"><img src="/Neo/theme/basic/img/mobile/location.jpg" alt="" width="12px" height="12px">&emsp;<b>지도보기</b></li>
@@ -77,6 +40,7 @@ if($conn->connect_errno){
             </ul>
             <p style="font-size:11px; margin:13px;"><?php echo $row["explanation"]?></p>
             <img src="/Neo/theme/basic/img/mobile/location.jpg" alt="" width="12px" height="12px">&nbsp;<b style="color: #FFAE39;">지도보기</b>
+            <!--지도 API-->
             <div id="map" style="width:95%; height:250px; margin:13px;"></div>
             <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=583837e2f84a7b2288be3082138b1949"></script>
             <script>

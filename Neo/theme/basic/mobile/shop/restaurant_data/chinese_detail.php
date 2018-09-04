@@ -6,8 +6,6 @@
   include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
 ?>
 
-<a href="/Neo/theme/basic/mobile/shop/restaurant_data/chinese.php"><div id="back"></div></a>
-
 <?php
 $conn = new mysqli("localhost", "jejunulab", "jejunu!!", "jejunulab");
 if($conn->connect_errno){

@@ -1,7 +1,7 @@
 <style>
   a{color: #000000; text-decoration: none;}
   .head{width: 100%; height: 100px; background-color: black; position: relative;}
-  .datalist{border: 3px solid #e6e6e6; margin: 10 auto; width: 95%; height: 120px;}
+  .datalist{border: 3px solid #e6e6e6; margin: 10 auto; width: 95%; height: 150px;}
   .container{width: 100%; height: 220px; border: 0px; margin :0; padding-top: 10px; }
   .container div {width:100%; height: 100%; border-bottom: 3px solid #FFAE39;}
   .area{ width: 48%; height: 150px; float: left; border: 3px solid #e6e6e6;text-align: center;}
@@ -9,7 +9,7 @@
   .area2{width: auto; height: 100px;margin-top: 3px; margin-left: 10px; margin-right: 10px;}
   .area2 h3,h6{padding-top: 30px;}
   #ul{list-style: none; padding: 0;}
-  #back{top:0; margin-left: 10px; position: absolute;; width: 30px; height: 50px; z-index: 1; background-image: url('/Neo/theme/basic/img/mobile/back_icon.png'); background-repeat: no-repeat;background-size: 100% 100%;}
+  #back{top:0; margin-left: 10px; position: absolute; width: 30px; height: 50px; z-index: 1; background-image: url('/Neo/theme/basic/img/mobile/back_icon.png'); background-repeat: no-repeat;background-size: 100% 100%;}
   #title{ width:100%; height:30px; padding-top:10px; margin:0 auto;text-align: center;}
   .sub_title{width:25%; float: left; margin-left: 4%; margin-right: 4%; color: #FFAE39; border: 2px solid #FFAE39; border-radius: 10px;}
   #img-position{width: 50%; height: 100%; float: left;}
@@ -23,6 +23,27 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+   $(document).ready(function() {
+  $("#content-slider").lightSlider({
+            loop:true,
+            keyPress:true
+        });
+        $('#image-gallery').lightSlider({
+            gallery:true,
+            item:1,
+            thumbItem:9,
+            slideMargin: 0,
+            speed:500,
+            auto:true,
+            loop:true,
+            onSliderLoad: function() {
+                $('#image-gallery').removeClass('cS-hidden');
+            }
+        });
+});
+</script>
 
 <?php
 if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
@@ -40,8 +61,18 @@ include_once(G5_LIB_PATH.'/latest.lib.php');
         include G5_MOBILE_PATH.'/newwin.inc.php'; // 팝업레이어
     } ?>
 
-    <div id="hd_wr" style="width:100%; line-height: 30px; height:50px; background-color: white; text-align: center;">
+    <?php
+    $http_host = $_SERVER['HTTP_HOST'];
+    $request_uri = $_SERVER['REQUEST_URI'];
+    $url = 'http://' . $http_host . $request_uri;
+    ?>
+    <div>HTTP_HOST: <?= $http_host ?></div>
+    <div>REQUEST_URI: <?= $request_uri ?></div>
+    <div>URL: <?= $url ?></div>
+
+    <div id="hd_wr" style="width:100%; line-height: 26px; height:50px; background-color: white; text-align: center;">
       <a href="/Neo/theme/basic/mobile/shop/index.php"><span style="font-size: 20px; color:#FFAE39"><b>neo internet</b></span></a>
+      <a href="<?= $url ?>" target="_parent"><div id="back"></div></a>
     </div>
     <?php include_once(G5_THEME_MSHOP_PATH.'/category.php'); // 분류 ?>
 

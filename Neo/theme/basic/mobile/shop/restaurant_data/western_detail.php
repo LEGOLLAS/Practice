@@ -1,72 +1,23 @@
 <?php
-
-  $IMG_URL = "/Neo/theme/basic/img/mobile/data-img/food/cafe/";
-
   include_once('./_common.php');
 
   define("_INDEX_", TRUE);
 
   include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
-
 ?>
+
 <?php
 $conn = new mysqli("localhost", "jejunulab", "jejunu!!", "jejunulab");
 if($conn->connect_errno){
   print("Connection Error:".$conn->connect_errno);
 }else {
-  $response = $conn->query("select * from `cafe` where name=\"".$_GET["name"]."\"");
+  $response = $conn->query("select * from `Westernfood` where name=\"".$_GET["name"]."\"");
   if($response){
     while($row = $response->fetch_assoc()){
-      $imgData = explode(",", $row["image-folder"]);
       ?>
 
       <ul id="ul">
           <li class="datalist">
-
-            <style>
-                ul{
-                  list-style: none outside none;
-                  padding-left: 0;
-                  margin: 0;
-                }
-                .demo .item{
-                  margin-bottom: 60px;
-                }
-                .content-slider li{
-                  background-color: #ed3020;
-                  text-align: center;
-                  color: #FFF;
-                }
-                .content-slider h3 {
-                  margin: 0;
-                  padding: 70px 0;
-                }
-                .demo{
-                  width: 800px;
-                }
-            </style>
-
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-            <script src="/Neo/theme/basic/js/lightslider.js"></script>
-            <link rel="stylesheet" href="/Neo/theme/basic/css/lightslider.css">
-
-            <div class="demo">
-                    <div class="item">
-                        <div class="clearfix" style="width:100%">
-                            <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                                <?php
-                                  for ($i=0; $i < count($imgData); $i++) {
-                                    ?>
-                                    <li data-thumb="<? echo $IMG_URL.$row["forder-name"].'/'.$imgData[$i] ?>">
-                                        <img src="<? echo $IMG_URL.$row["forder-name"].'/'.$imgData[$i] ?>" />
-                                    </li>
-                                    <?php
-                                  }
-                                ?>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             <span style="font-size:20px;"><?php echo $row["name"]?></span>
             <p style="font-size:11px"><?php echo $row["PhoneNumber"]?></p>
             <p style="font-size:11px"><?php echo $row["worktime"]?></p>

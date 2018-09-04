@@ -6,8 +6,6 @@ define("_INDEX_", TRUE);
 include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
 ?>
 
-<a href="/Neo/theme/basic/mobile/shop/index.php"><div id="back"></div></a>
-
 <div class="container" style="padding-left: 10px; padding-right: 10px;">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->

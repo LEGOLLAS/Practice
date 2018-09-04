@@ -380,7 +380,7 @@
                         }
                     }
                     var $cSouter = $slide.parent();
-                    $cSouter.find('.lSPager').html(pagers);
+                    $cSouter.find('.lSPager').html(pagers); 
                     if (settings.gallery === true) {
                         if (settings.vertical === true) {
                             // set Gallery thumbnail width
@@ -454,7 +454,7 @@
                         setCss();
                         if (!interval) {
                             $this.auto();
-                        }
+                        }   
                     }else{
                         obj.find('img').load(function () {
                             setTimeout(function () {
@@ -1056,7 +1056,7 @@
                 }
             }
             return sc + 1;
-        };
+        }; 
         $el.getTotalSlideCount = function () {
             return $slide.find('.lslide').length;
         };
