@@ -14,7 +14,7 @@
   .sub_title{width:25%; float: left; margin-left: 4%; margin-right: 4%; color: #FFAE39; border: 2px solid #FFAE39; border-radius: 10px;}
   #img-position{width: 50%; height: 100%; float: left;}
   #text-position{width: 45%; height: 100%; float: right; padding-top: 10px;}
-  #choose{width: 100%; height: 40px; margin-top: 15px; margin-bottom: 15px;}
+  #choose{width: 100%; height: 40px; margin-top: 15px; margin-bottom: 15px; list-style: none;}
   #choose li{border-top: 2px solid #e6e6e6; border-bottom: 2px solid #e6e6e6; width: 33%; height: 100%; line-height: 40px; text-align: center; float: left;}
   #choose li b{color: #FFAE39;}
   #imgs{max-width: 100%; overflow: hidden; position: relative;}
