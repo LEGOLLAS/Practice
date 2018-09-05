@@ -13,7 +13,7 @@
   #title{ width:100%; height:30px; padding-top:10px; margin:0 auto;text-align: center;}
   .sub_title{width:25%; float: left; margin-left: 4%; margin-right: 4%; color: #FFAE39; border: 2px solid #FFAE39; border-radius: 10px;}
   #img-position{width: 50%; height: 100%; float: left;}
-  #text-position{width: 45%; height: 100%; float: right; padding-top: 10px;}
+  #text-position{width: 45%; height: 100%; float: right; padding-top: 10px; font-size: 20px;}
   #choose{width: 100%; height: 40px; margin-top: 15px; margin-bottom: 15px; list-style: none;}
   #choose li{border-top: 2px solid #e6e6e6; border-bottom: 2px solid #e6e6e6; width: 33%; height: 100%; line-height: 40px; text-align: center; float: left;}
   #choose li b{color: #FFAE39;}
@@ -24,26 +24,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script>
-   $(document).ready(function() {
-  $("#content-slider").lightSlider({
-            loop:true,
-            keyPress:true
-        });
-        $('#image-gallery').lightSlider({
-            gallery:true,
-            item:1,
-            thumbItem:9,
-            slideMargin: 0,
-            speed:500,
-            auto:true,
-            loop:true,
-            onSliderLoad: function() {
-                $('#image-gallery').removeClass('cS-hidden');
-            }
-        });
-});
-</script>
 
 <?php
 if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
@@ -61,18 +41,9 @@ include_once(G5_LIB_PATH.'/latest.lib.php');
         include G5_MOBILE_PATH.'/newwin.inc.php'; // 팝업레이어
     } ?>
 
-    <?php
-    $http_host = $_SERVER['HTTP_HOST'];
-    $request_uri = $_SERVER['REQUEST_URI'];
-    $url = 'http://' . $http_host . $request_uri;
-    ?>
-    <div>HTTP_HOST: <?= $http_host ?></div>
-    <div>REQUEST_URI: <?= $request_uri ?></div>
-    <div>URL: <?= $url ?></div>
-
     <div id="hd_wr" style="width:100%; line-height: 26px; height:50px; background-color: white; text-align: center;">
       <a href="/Neo/theme/basic/mobile/shop/index.php"><span style="font-size: 20px; color:#FFAE39"><b>neo internet</b></span></a>
-      <a href="<?= $url ?>" target="_parent"><div id="back"></div></a>
+      <a href="#" onclick="history.back()"><div id="back"></div></a>
     </div>
     <?php include_once(G5_THEME_MSHOP_PATH.'/category.php'); // 분류 ?>
 

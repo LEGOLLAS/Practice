@@ -37,41 +37,41 @@ include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
 <a href="/Neo/theme/basic/mobile/shop/sightseeing_data/jejusi.php">
   <div class="area2" style="background-image:url('/Neo/theme/basic/img/mobile/jejusi.PNG'); background-repeat:no-repeat; background-size:100% 100%;">
     <h3 style="color:white; padding-Left:20px; margin:0;">제주시</h3>
-    <h6 style="color:white; padding-left:50px; margin:0;">(Jejusi)</h6>
+    <h6 style="color:white; padding-left:20px; margin:0;">(Jejusi)</h6>
   </div>
 </a>
 
 <a href="/Neo/theme/basic/mobile/shop/sightseeing_data/jejusi-east.php">
   <div class="area2" style="background-image:url('/Neo/theme/basic/img/mobile/jejusi_east.png'); background-repeat:no-repeat; background-size:100% 100%;">
     <h3 style="color:white; padding-Left:20px; margin:0;">제주시 동쪽</h3>
-    <h6 style="color:white; padding-left:50px; margin:0;">(Jejusi East)</h6>
+    <h6 style="color:white; padding-left:20px; margin:0;">(Jejusi East)</h6>
   </div>
 </a>
 
 <a href="/Neo/theme/basic/mobile/shop/sightseeing_data/jejusi-west.php">
   <div class="area2" style="background-image:url('/Neo/theme/basic/img/mobile/jejusi_west.png'); background-repeat:no-repeat; background-size:100% 100%;">
     <h3 style="color:white; padding-Left:20px; margin:0;">제주시 서쪽</h3>
-    <h6 style="color:white; padding-left:50px; margin:0;">(Jejusi West)</h6>
+    <h6 style="color:white; padding-left:20px; margin:0;">(Jejusi West)</h6>
   </div>
 </a>
 
 <a href="/Neo/theme/basic/mobile/shop/sightseeing_data/seogwipo.php">
   <div class="area2" style="background-image:url('/Neo/theme/basic/img/mobile/seogwipo.PNG'); background-repeat:no-repeat; background-size:100% 100%;">
     <h3 style="color:white; padding-Left:20px; margin:0;">서귀포시</h3>
-    <h6 style="color:white; padding-left:50px; margin:0;">(Seogwipo)</h6>
+    <h6 style="color:white; padding-left:20px; margin:0;">(Seogwipo)</h6>
   </div>
 </a>
 
 <a href="/Neo/theme/basic/mobile/shop/sightseeing_data/seogwipo-east.php">
   <div class="area2" style="background-image:url('/Neo/theme/basic/img/mobile/seogwipo_east.png'); background-repeat:no-repeat; background-size:100% 100%;">
     <h3 style="color:white; padding-Left:20px; margin:0;">서귀포시 동쪽</h3>
-    <h6 style="color:white; padding-left:50px; margin:0;">(Seogwipo East)</h6>
+    <h6 style="color:white; padding-left:20px; margin:0;">(Seogwipo East)</h6>
   </div>
 </a>
 
 <a href="/Neo/theme/basic/mobile/shop/sightseeing_data/seogwipo-west.php">
   <div class="area2" style="background-image:url('/Neo/theme/basic/img/mobile/seogwipo_west.png'); background-repeat:no-repeat; background-size:100% 100%;">
     <h3 style="color:white; padding-Left:20px; margin:0;">서귀포시 서쪽</h3>
-    <h6 style="color:white; padding-left:50px; margin:0;">(Seogwipo West)</h6>
+    <h6 style="color:white; padding-left:20px; margin:0;">(Seogwipo West)</h6>
   </div>
 </a>

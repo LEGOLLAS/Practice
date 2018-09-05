@@ -42,23 +42,43 @@ if($conn->connect_errno){
                   padding: 70px 0;
                 }
                 .demo{
-                  width: 800px;
+                  width: 100%;
                 }
             </style>
 
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
             <script src="/Neo/theme/basic/js/lightslider.js"></script>
             <link rel="stylesheet" href="/Neo/theme/basic/css/lightslider.css">
+            <script>
+               $(document).ready(function() {
+              $("#content-slider").lightSlider({
+                        loop:true,
+                        keyPress:true
+                    });
+                    $('#image-gallery').lightSlider({
+                        gallery:true,
+                        item:1,
+                        thumbItem:9,
+                        slideMargin: 0,
+                        speed:500,
+                        auto:true,
+                        loop:true,
+                        onSliderLoad: function() {
+                            $('#image-gallery').removeClass('cS-hidden');
+                        }
+                    });
+            });
+            </script>
 
             <div class="demo">
                     <div class="item">
                         <div class="clearfix" style="width:100%">
-                            <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+                            <ul id="image-gallery" class="gallery list-unstyled cS-hidden" style="width:100%; height:300px;">
                                 <?php
                                   for ($i=0; $i < count($imgData); $i++) {
                                     ?>
                                     <li data-thumb="<? echo $IMG_URL.$row["forder-name"].'/'.$imgData[$i] ?>">
-                                        <img src="<? echo $IMG_URL.$row["forder-name"].'/'.$imgData[$i] ?>" />
+                                        <img src="<? echo $IMG_URL.$row["forder-name"].'/'.$imgData[$i] ?>" width="100%" height="100%" />
                                     </li>
                                     <?php
                                   }
