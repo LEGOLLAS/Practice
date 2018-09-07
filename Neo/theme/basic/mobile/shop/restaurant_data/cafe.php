@@ -24,6 +24,12 @@
   </div>
 </div>
 
+  <link rel="stylesheet" href="/Neo/theme/basic/css/range-slider.css">
+  <div class="range-slider">
+      <input type="range" class="range-slider__range" value="250" min="0" max="5000"  step="10" >
+      <span class="range-slider__value">0</span>
+  </div>
+
 <?php
 $conn = new mysqli("localhost", "jejunulab", "jejunu!!", "jejunulab");
 if($conn->connect_errno){
@@ -39,13 +45,13 @@ if($conn->connect_errno){
       <ul id="ul">
         <a href="/Neo/theme/basic/mobile/shop/restaurant_data/cafe_detail.php?name=<?php echo $row["name"]?>&address=<?php echo $row["address"]?>&PhoneNumber=<?php echo $row["PhoneNumber"]?>&worktime=<?php echo $row["worktime"]?>&Lat=<?php echo $row["Lat"]?>&Lon=<?php echo $row["Lon"]?>">
           <li class="datalist">
-            <div id="img-positon">
-              <img src="<? echo $IMG_URL.$row["forder-name"].'/'.$imgData[0] ?>" style="width:50%; height:100%; float:left;" >
+            <div class="img-positon">
+              <img src="<? echo $IMG_URL.$row["folder-name"].'/'.$imgData[0] ?>" style="width:50%; height:100%; float:left;" >
             </div>
-            <div id="text-position">
+            <div class="text-position">
               <span><?php echo $row["name"]?></span><br><br>
               <span style="font-size:10px"><?php echo $row["address"]?></span><br><br>
-              <span style="font-size:11px"><?php echo $row["PhoneNumber"]?></span>
+              <span style="font-size:10px"><?php echo $row["explanation"]?></span>
             </div>
           </li>
         </a>

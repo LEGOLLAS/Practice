@@ -1,14 +1,3 @@
-<style media="screen">
-    a{color: #000000; text-decoration: none;}
-    .head{width: 100%; height: 100px; background-color: black; position: relative;}
-    .datalist{border: 3px solid #e6e6e6; margin: 10 auto; width: 95%; height: 120px;}
-    #ul{list-style: none; padding: 0;}
-    #back{top:0; margin-left: 10px; position: absolute;; width: 30px; height: 50px; z-index: 1; background-image: url('/Neo/theme/basic/img/mobile/back_icon.png'); background-repeat: no-repeat;background-size: 100% 100%;}
-    #title{ width:100%; height:30px; padding-top:10px; margin:0 auto;text-align: center;}
-    .sub_title{width:25%; float: left; margin-left: 4%; margin-right: 4%; color: #FFAE39; border: 2px solid #FFAE39; border-radius: 10px;}
-    #img-position{width: 50%; height: 100%; float: left;}
-    #text-position{width: 45%; height: 100%; float: right; padding-top: 10px;}
-</style>
 
 <?php
 
@@ -43,17 +32,19 @@ if($conn->connect_errno){
   $response = $conn->query("select * from `chinesefood`");
   if($response){
     while($row = $response->fetch_assoc()){
+
+      $imgData = explode(",", $row["image-folder"]);
       ?>
       <ul id="ul">
         <a href="/Neo/theme/basic/mobile/shop/restaurant_data/chinese_detail.php?name=<?php echo $row["name"]?>&address=<?php echo $row["address"]?>&PhoneNumber=<?php echo $row["PhoneNumber"]?>&worktime=<?php echo $row["worktime"]?>&Lat=<?php echo $row["Lat"]?>&Lon=<?php echo $row["Lon"]?>">
           <li class="datalist">
-            <div id="img-positon">
-              <img src="<? echo $IMG_URL.$row["forder-name"].'/'.$imgData[0] ?>" style="width:50%; height:100%; float:left;" >
+            <div class="img-positon">
+              <img src="<? echo $IMG_URL.$row["folder-name"].'/'.$imgData[0] ?>" style="width:50%; height:100%; float:left;" >
             </div>
-            <div id="text-position">
+            <div class="text-position">
               <span><?php echo $row["name"]?></span><br><br>
               <span style="font-size:10px"><?php echo $row["address"]?></span><br><br>
-              <span style="font-size:11px"><?php echo $row["PhoneNumber"]?></span>
+              <span style="font-size:10px"><?php echo $row["explanation"]?></span>
             </div>
           </li>
         </a>

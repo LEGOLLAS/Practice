@@ -21,8 +21,7 @@ if($conn->connect_errno){
       ?>
 
       <ul id="ul">
-          <li class="datalist">
-
+          <li class="teduri">
             <style>
                 ul{
                   list-style: none outside none;
@@ -30,7 +29,7 @@ if($conn->connect_errno){
                   margin: 0;
                 }
                 .demo .item{
-                  margin-bottom: 60px;
+                  margin-bottom: 10px;
                 }
                 .content-slider li{
                   background-color: #ed3020;
@@ -77,8 +76,50 @@ if($conn->connect_errno){
                                 <?php
                                   for ($i=0; $i < count($imgData); $i++) {
                                     ?>
-                                    <li data-thumb="<? echo $IMG_URL.$row["forder-name"].'/'.$imgData[$i] ?>">
-                                        <img src="<? echo $IMG_URL.$row["forder-name"].'/'.$imgData[$i] ?>" width="100%" height="100%" />
+                                    <li data-thumb="<? echo $IMG_URL.$row["folder-name"].'/'.$imgData[$i] ?>">
+                                        <script type="text/javascript">
+                                            function resizeImg2(osrc)
+                                            {
+                                                var bdiv =document.createElement('DIV');
+                                                document.body.appendChild(bdiv);
+                                                bdiv.setAttribute("id", "bdiv");
+                                                bdiv.style.position = 'absolute';
+                                                bdiv.style.top = 0;
+                                                bdiv.style.left = 0;
+                                                bdiv.style.zIndex = 0;
+                                                bdiv.style.width = document.body.scrollWidth;
+                                                bdiv.style.height = document.body.scrollHeight;
+                                                bdiv.style.background = 'gray';
+                                                bdiv.style.opacity = '0.5';
+                                                var odiv = document.createElement('DIV');
+                                                document.body.appendChild(odiv);
+                                                odiv.style.zIndex = 1;
+                                                odiv.setAttribute("id", "odiv");
+                                                odiv.innerHTML = "<a href='javascript:void(closeImg())'><img id='oimg' src='"+osrc+"' border='0' width='100%' height='600px'/></a>";
+                                                var img = document.all['oimg'];
+                                                var owidth = (document.body.clientWidth)/2 - (img.width)/2;
+                                                var oheight = (document.body.clientHeight)/2 - (img.height)/2;
+                                                odiv.style.position = 'absolute';
+                                                odiv.style.top = oheight + document.body.scrollTop;
+                                                odiv.style.left = owidth;
+                                                scrollImg();
+                                            }
+                                            function scrollImg()
+                                            {
+                                                var odiv = document.all['odiv'];
+                                                var img = document.all['oimg'];
+                                                var oheight = (document.body.clientHeight)/2 - (img.height)/2 + document.body.scrollTop;
+                                                odiv.style.top = oheight;
+                                                settime = setTimeout(scrollImg, 100);
+                                            }
+                                            function closeImg()
+                                            {
+                                                document.body.removeChild(odiv);
+                                                document.body.removeChild(bdiv);
+                                                clearTimeout(settime);
+                                            }
+                                        </script>
+                                        <img src="<? echo $IMG_URL.$row["folder-name"].'/'.$imgData[$i] ?>" width="100%" height="100%" onclick="resizeImg2(this.src)"/>
                                     </li>
                                     <?php
                                   }
@@ -90,13 +131,13 @@ if($conn->connect_errno){
             <span style="font-size:20px;"><?php echo $row["name"]?></span>
             <p style="font-size:11px"><?php echo $row["PhoneNumber"]?></p>
             <p style="font-size:11px"><?php echo $row["worktime"]?></p>
+            <p style="font-size:11px;"><?php echo $row["explanation"]?></p>
             <ul id="choose">
-              <li><img src="/Neo/theme/basic/img/mobile/heart.jpg" alt="" width="12px" height="12px">&emsp;<b>좋아요</b></li>
-              <li style="border-left: 2px solid #e6e6e6; border-right: 2px solid #e6e6e6;"><img src="/Neo/theme/basic/img/mobile/location.jpg" alt="" width="12px" height="12px">&emsp;<b>지도보기</b></li>
-              <li><img src="/Neo/theme/basic/img/mobile/calendar.jpg" alt="" width="12px" height="12px">&emsp;<b>일정에 넣기</b></li>
+              <li><img src="/Neo/theme/basic/img/mobile/heart.jpg" alt="" width="15px" height="15px" >&nbsp;<b>좋아요</b></li>
+              <li style="border-left: 2px solid #e6e6e6; border-right: 2px solid #e6e6e6;"><img src="/Neo/theme/basic/img/mobile/location.jpg" alt="" width="15px" height="15px">&nbsp;<b>지도보기</b></li>
+              <li><img src="/Neo/theme/basic/img/mobile/calendar.jpg" alt="" width="15px" height="15px">&nbsp;<b>일정에 넣기</b></li>
             </ul>
-            <p style="font-size:11px; margin:13px;"><?php echo $row["explanation"]?></p>
-            <img src="/Neo/theme/basic/img/mobile/location.jpg" alt="" width="12px" height="12px">&nbsp;<b style="color: #FFAE39;">지도보기</b>
+            <img src="/Neo/theme/basic/img/mobile/location.jpg" alt="" width="15px" height="15px">&nbsp;<b style="color: #FFAE39; font-size: 13px;">지도보기</b>
             <div id="map" style="width:95%; height:250px; margin:13px;"></div>
             <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=583837e2f84a7b2288be3082138b1949"></script>
             <script>
@@ -124,8 +165,10 @@ if($conn->connect_errno){
             <p style="font-size:12px">&emsp;
               <img src="/Neo/theme/basic/img/mobile/location.jpg" alt="" width="12px" height="12px">&nbsp;<?php echo $row["address"]?>&emsp;
               <a href="#"><img src="/Neo/theme/basic/img/mobile/detailsee.jpg" alt="" width="70px" height="17px"></a>
+              <br>
+              <br>
+              <br>
             </p>
-          </li>
       </ul>
       <?
     }

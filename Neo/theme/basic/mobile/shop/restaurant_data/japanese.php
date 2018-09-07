@@ -32,17 +32,19 @@ if($conn->connect_errno){
   $response = $conn->query("select * from `japanesefood`");
   if($response){
     while($row = $response->fetch_assoc()){
+
+      $imgData = explode(",", $row["image-folder"]);
       ?>
       <ul id="ul">
-        <a href="/Neo/theme/basic/mobile/shop/restaurant_data/chinese_detail.php?name=<?php echo $row["name"]?>&address=<?php echo $row["address"]?>&PhoneNumber=<?php echo $row["PhoneNumber"]?>&worktime=<?php echo $row["worktime"]?>&Lat=<?php echo $row["Lat"]?>&Lon=<?php echo $row["Lon"]?>">
+        <a href="/Neo/theme/basic/mobile/shop/restaurant_data/japanese_detail.php?name=<?php echo $row["name"]?>&address=<?php echo $row["address"]?>&PhoneNumber=<?php echo $row["PhoneNumber"]?>&worktime=<?php echo $row["worktime"]?>&Lat=<?php echo $row["Lat"]?>&Lon=<?php echo $row["Lon"]?>">
           <li class="datalist">
-            <div id="img-positon">
-              <img src="<? echo $IMG_URL.$row["forder-name"].'/'.$imgData[0] ?>" style="width:50%; height:100%; float:left;" >
+            <div class="img-positon">
+              <img src="<? echo $IMG_URL.$row["folder-name"].'/'.$imgData[0] ?>" style="width:50%; height:100%; float:left;" >
             </div>
-            <div id="text-position">
+            <div class="text-position">
               <span><?php echo $row["name"]?></span><br><br>
               <span style="font-size:10px"><?php echo $row["address"]?></span><br><br>
-              <span style="font-size:11px"><?php echo $row["PhoneNumber"]?></span>
+              <span style="font-size:10px"><?php echo $row["explanation"]?></span>
             </div>
           </li>
         </a>

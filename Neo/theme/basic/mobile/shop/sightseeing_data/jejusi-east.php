@@ -1,14 +1,7 @@
-<style media="screen">
-  a{color: #000000; text-decoration: none;}
-  .head{width: 100%; height: 100px; background-color: black; position: relative;}
-  .datalist{border: 3px solid #e6e6e6; margin: 10 auto; width: 95%;}
-  #ul{list-style: none; padding: 0;}
-  #back{top:0; margin-left: 10px; position: absolute; width: 30px; height: 50px; z-index: 1; background-image: url('/Neo/theme/basic/img/mobile/back_icon.png'); background-repeat: no-repeat;background-size: 100% 100%;}
-  #title{ width:100%; height:30px; padding-top:10px; margin:0 auto;text-align: center;}
-  .sub_title{width:25%; float: left; margin-left: 4%; margin-right: 4%; color: #FFAE39; border: 2px solid #FFAE39; border-radius: 10px;}
-</style>
 
 <?php
+$IMG_URL = "/Neo/theme/basic/img/mobile/data-img/sightseeing/jejusi-east/";
+
 include_once('./_common.php');
 
 define("_INDEX_", TRUE);
@@ -39,16 +32,17 @@ if($conn->connect_errno){
   $response = $conn->query("select * from `Jejusi east`");
   if($response){
     while($row = $response->fetch_assoc()){
+      $imgData = explode(",", $row["image-folder"]);
       ?>
       <ul id="ul">
         <a href="/Neo/theme/basic/mobile/shop/sightseeing_data/jejusi-east_detail.php?name=<?php echo $row["name"]?>&address=<?php echo $row["address"]?>number=<?php echo $row["number"]?>&working time=<?php echo $row["working time"]?>&explanation=<?php echo $row["explanation"]?>&price=<?php echo $row["price"]?>&Lat=<?php echo $row["Lat"]?>&Lon=<?php echo $row["Lon"]?>">
-          <li class="datalist">
-            <span><?php echo $row["name"]?></span>
-            <p style="font-size:12px"><?php echo $row["address"]?></p>
-            <p style="font-size:12px"><?php echo $row["number"]?></p>
-            <p style="font-size:12px"><?php echo $row["worktime"]?></p>
-            <p style="font-size:12px"><?php echo $row["explanation"]?></p>
-            <p style="font-size:12px"><?php echo $row["price"]?></p>
+          <li id="datalist2">
+            <div class="img-positon2" style="background-image: url('<? echo $IMG_URL.$row["folder-name"].'/'.$imgData[0] ?>'); background-size: 100% 100%"></div>
+            <div class="text-positon2">
+              <span style="font-size:15px;"><?php echo $row["name"]?></span><br><br>
+              <span style="font-size:11px"><?php echo $row["address"]?></span><br><br>
+              <span style="font-size:10px;"><?php echo $row["explanation"]?></span>
+            </div>
           </li>
         </a>
       </ul>

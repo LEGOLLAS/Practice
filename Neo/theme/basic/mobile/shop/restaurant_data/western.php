@@ -1,6 +1,6 @@
 <?php
 
-  $IMG_URL = "/Neo/theme/basic/img/mobile/data-img/food/japanese/";
+  $IMG_URL = "/Neo/theme/basic/img/mobile/data-img/food/western/";
 
   include_once('./_common.php');
 
@@ -13,7 +13,7 @@
 <div id="td" style="width:100%;">
   <div id="title">
     <div class="sub_title">
-      <b>중식</b>
+      <b>양식</b>
     </div>
     <div class="sub_title">
       <b>맛집</b>
@@ -32,19 +32,21 @@ if($conn->connect_errno){
   $response = $conn->query("select * from `Westernfood`");
   if($response){
     while($row = $response->fetch_assoc()){
+
+      $imgData = explode(",", $row["image-folder"]);
       ?>
       <ul id="ul">
         <a href="/Neo/theme/basic/mobile/shop/restaurant_data/western_detail.php?name=<?php echo $row["name"]?>&address=<?php echo $row["address"]?>&PhoneNumber=<?php echo $row["PhoneNumber"]?>&worktime=<?php echo $row["worktime"]?>&Lat=<?php echo $row["Lat"]?>&Lon=<?php echo $row["Lon"]?>">
-          <li class="datalist">
-            <div id="img-positon">
-              <img src="<? echo $IMG_URL.$row["forder-name"].'/'.$imgData[0] ?>" style="width:50%; height:100%; float:left;" >
-            </div>
-            <div id="text-position">
-              <span><?php echo $row["name"]?></span><br><br>
-              <span style="font-size:10px"><?php echo $row["address"]?></span><br><br>
-              <span style="font-size:11px"><?php echo $row["PhoneNumber"]?></span>
-            </div>
-          </li>
+            <li class="datalist">
+              <div class="img-positon">
+                <img src="<? echo $IMG_URL.$row["folder-name"].'/'.$imgData[0] ?>" style="width:50%; height:100%; float:left;" >
+              </div>
+              <div class="text-position">
+                <span><?php echo $row["name"]?></span><br><br>
+                <span style="font-size:10px"><?php echo $row["address"]?></span><br><br>
+                <span style="font-size:10px"><?php echo $row["explanation"]?></span>
+              </div>
+            </li>
         </a>
       </ul>
       <?

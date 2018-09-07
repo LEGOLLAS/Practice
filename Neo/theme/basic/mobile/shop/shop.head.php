@@ -1,23 +1,26 @@
 <style>
   a{color: #000000; text-decoration: none;}
   .head{width: 100%; height: 100px; background-color: black; position: relative;}
-  .datalist{border: 3px solid #e6e6e6; margin: 10 auto; width: 95%; height: 150px;}
-  .container{width: 100%; height: 220px; border: 0px; margin :0; padding-top: 10px; }
+  .datalist{border: 3px solid #e6e6e6; margin: 10 auto; width: 95%; height: 130px; overflow: hidden;}
+  .teduri{margin: 10 auto; width: 95%;}
+  .img-position{width: 50%; height: 100%; float: left;}
+  .text-position{width: 45%; height: 100%; float: right;font-size: 15px; }
+  .img-positon2{width: 50%; height: 100%; float: left; margin-right: 10px;}
+  .text-positon2{width: 45%; height: 100%; float: left;}
+  .container{width: 100%; height: 220px; border: 0px; margin :0; padding-top: 10px;}
   .container div {width:100%; height: 100%; border-bottom: 3px solid #FFAE39;}
   .area{ width: 48%; height: 150px; float: left; border: 3px solid #e6e6e6;text-align: center;}
   .area-icon{width: 45%; height:50%; margin:10px auto; background-repeat:no-repeat; background-size:100% 100%;}
   .area2{width: auto; height: 100px;margin-top: 3px; margin-left: 10px; margin-right: 10px;}
   .area2 h3,h6{padding-top: 30px;}
+  .sub_title{width:25%; font-size: 15px; float: left; margin-left: 4%; margin-right: 4%; color: #FFAE39; border: 2px solid #FFAE39; border-radius: 10px;}
+  .back{top:0; margin-left: 1px; position: absolute; width: 30px; height: 40px; margin-top: 5px; background-image: url('/Neo/theme/basic/img/mobile/back_icon.png'); background-repeat: no-repeat;background-size: 100% 100%;}
+  #title{ width:100%; height:40px; padding-top:10px; margin:0 auto;text-align: center;}
   #ul{list-style: none; padding: 0;}
-  #back{top:0; margin-left: 10px; position: absolute; width: 30px; height: 50px; z-index: 1; background-image: url('/Neo/theme/basic/img/mobile/back_icon.png'); background-repeat: no-repeat;background-size: 100% 100%;}
-  #title{ width:100%; height:30px; padding-top:10px; margin:0 auto;text-align: center;}
-  .sub_title{width:25%; float: left; margin-left: 4%; margin-right: 4%; color: #FFAE39; border: 2px solid #FFAE39; border-radius: 10px;}
-  #img-position{width: 50%; height: 100%; float: left;}
-  #text-position{width: 45%; height: 100%; float: right; padding-top: 10px; font-size: 20px;}
-  #choose{width: 100%; height: 40px; margin-top: 15px; margin-bottom: 15px; list-style: none;}
-  #choose li{border-top: 2px solid #e6e6e6; border-bottom: 2px solid #e6e6e6; width: 33%; height: 100%; line-height: 40px; text-align: center; float: left;}
+  #datalist2{border: 3px solid #e6e6e6; margin: 10 auto; width: 95%; height: 120px;  overflow: hidden;}
+  #choose{width: 100%; height: 40px; margin-top: 15px; margin-bottom: 15px; list-style: none; font-size: 13px;}
+  #choose li{border-top: 2px solid #e6e6e6; border-bottom: 2px solid #e6e6e6; width: 33%; height: 100%; line-height: 35px; text-align: center; float: left;}
   #choose li b{color: #FFAE39;}
-  #imgs{max-width: 100%; overflow: hidden; position: relative;}
 </style>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -43,7 +46,7 @@ include_once(G5_LIB_PATH.'/latest.lib.php');
 
     <div id="hd_wr" style="width:100%; line-height: 26px; height:50px; background-color: white; text-align: center;">
       <a href="/Neo/theme/basic/mobile/shop/index.php"><span style="font-size: 20px; color:#FFAE39"><b>neo internet</b></span></a>
-      <a href="#" onclick="history.back()"><div id="back"></div></a>
+      <a href="#" onclick="history.back()"><div class="back"></div></a>
     </div>
     <?php include_once(G5_THEME_MSHOP_PATH.'/category.php'); // 분류 ?>
 

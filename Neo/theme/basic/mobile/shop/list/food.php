@@ -13,13 +13,17 @@ include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+      <li data-target="#myCarousel" data-slide-to="4"></li>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
-      <div class="item active" style="background-image: url('/Neo/theme/basic/img/mobile/img-2.jpeg'); background-size: 100% 100%; background-repeat:no-repeat"></div>
-      <div class="item" style="background-image: url('/Neo/theme/basic/img/mobile/IMG_1412.jpg'); background-size: 100% 100%; background-repeat:no-repeat; "></div>
-      <div class="item" style="background-image: url('/Neo/theme/basic/img/mobile/IMG_1514.jpg'); background-size: 100% 100%; background-repeat:no-repeat; "></div>
+      <div class="item active" style="background-image: url('/Neo/theme/basic/img/mobile/slider-food1.PNG'); background-size: 100% 100%; background-repeat:no-repeat"></div>
+      <div class="item" style="background-image: url('/Neo/theme/basic/img/mobile/slider-food2.PNG'); background-size: 100% 100%; background-repeat:no-repeat; "></div>
+      <div class="item" style="background-image: url('/Neo/theme/basic/img/mobile/slider-food3.PNG'); background-size: 100% 100%; background-repeat:no-repeat; "></div>
+      <div class="item" style="background-image: url('/Neo/theme/basic/img/mobile/slider-food4.PNG'); background-size: 100% 100%; background-repeat:no-repeat; "></div>
+      <div class="item" style="background-image: url('/Neo/theme/basic/img/mobile/slider-food5.PNG'); background-size: 100% 100%; background-repeat:no-repeat; "></div>
     </div>
 
     <!-- Left and right controls -->
