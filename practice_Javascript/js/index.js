@@ -100,8 +100,9 @@ for(var i=0; i<process.length; i++){
 }
 document.write(input + '</br>')
 
-//예시
+//콜백 예시
 var member = [1,10,20,24,25,3,4,5,6,7,8,11];
+//콜백
 var sortfunc = function(a,b){
   return a - b;
 }
