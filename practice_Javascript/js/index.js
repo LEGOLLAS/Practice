@@ -73,5 +73,36 @@ function increase(num){
 function decrease(num){
   return num-1;
 }
-alert(cal(increase, 1));
-alert(cal(increase, 1));
+document.write(cal(increase, 1) + '</br>');
+document.write(cal(increase, 1) + '</br>');
+
+//키값으로 함수를 넣었고 첫번째 인자를 함수로 호출해서 값계산하기
+function val(mode){
+  var group = {
+    'plus' : function(left, right){return left + right},
+    'minus' : function(left, right){return left - right}
+  }
+  return group[mode];
+}
+document.write(val('plus')(20,10)+'</br>');
+document.write(val('minus')(20,10)+'</br>');
+
+
+//배열의 값으로도 사용 가능하다..
+var process = [
+  function(input){return input+10;},
+  function(input){return input*input;},
+  function(input){return input/2;}
+];
+var input = 1;
+for(var i=0; i<process.length; i++){
+  input = process[i](input);
+}
+document.write(input + '</br>')
+
+//예시
+var member = [1,10,20,24,25,3,4,5,6,7,8,11];
+var sortfunc = function(a,b){
+  return a - b;
+}
+document.write(member.sort(sortfunc) + '</br>');
