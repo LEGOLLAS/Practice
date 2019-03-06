@@ -107,3 +107,68 @@ var sortfunc = function(a,b){
   return a - b;
 }
 document.write(member.sort(sortfunc) + '</br>');
+
+
+//클로저
+//내부함수는 inner이고 외부함수는 outer
+function outer(){
+   memo = 'good job';
+  function inner(){
+
+    document.write(memo);
+  }
+  inner();
+}
+outer();
+
+//another example
+//클로저는 return을 통해서 외부함수는 이미 죽었지만 호출가능하다.
+function outer2(){
+  var title = "don't give up";
+  return function (){
+    alert(title);
+  }
+}
+inner2 = outer2();
+inner2();
+
+//조금더 실용적인 방법 private variable
+//get_title, set_title은 속성의 역할을 한다. 근데 속성값으로 함수를 가지고 있기 때문에 이 둘은 메소드이다.
+function factory_movie(title){
+  return{
+    get_title : function(){
+      return title;
+    },
+    set_title : function(_title){
+      if(typeof _title === 'String'){
+        title = _title;
+      }
+      else{
+        alert('제목은 문자만 허용됩니다');
+      }
+    }
+  }
+}
+ghost = factory_movie('Ghost in the shell');
+matrix = factory_movie('Matrix');
+
+alert(ghost.get_title());
+alert(matrix.get_title());
+
+ghost.set_title(11);
+alert(ghost.get_title());
+alert(matrix.get_title());
+
+
+//클로저 응용
+var arr = [];
+for(var i =0; i<5; i++){
+  arr[i] = function(id){
+    return function(){
+      return id;
+    }
+  }(i);
+}
+for(var index in arr){
+  console.log(arr[index]());
+}
