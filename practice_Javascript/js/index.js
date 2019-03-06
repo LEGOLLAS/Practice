@@ -159,8 +159,8 @@ ghost.set_title(11);
 alert(ghost.get_title());
 alert(matrix.get_title());
 
-
-//클로저 응용//
+//고급클로저 다루기
+//클로저 응용
 var arr = [];
 for(var i =0; i<5; i++){
   arr[i] = function(id){
