@@ -61,3 +61,17 @@ function b(){
   document.write(i + '</br>');
 }
 a();
+
+//값으로부터의 함수 2019.3.6(수)
+function cal(func, num){
+  return func(num); //()는 함수를 호출한다는 의미
+  //함수 cal에 첫번째 인자에 담겨있는 func에 담겨있는 함수 호출 두번째 인자로 담겨있는 것을 첫번째 함수에 첫번째 인자로 호출한다.
+}
+function increase(num){
+  return num+1;
+}
+function decrease(num){
+  return num-1;
+}
+alert(cal(increase, 1));
+alert(cal(increase, 1));
