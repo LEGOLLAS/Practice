@@ -160,7 +160,7 @@ alert(ghost.get_title());
 alert(matrix.get_title());
 
 
-//클로저 응용
+//클로저 응용//
 var arr = [];
 for(var i =0; i<5; i++){
   arr[i] = function(id){
