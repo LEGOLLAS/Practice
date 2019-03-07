@@ -1,9 +1,9 @@
-//arguments 다루기
-function boolean(){
-  var value = prompt('message');
-  for(var i = 0; i<arguments.length; i++){
-    value += arguments[i];
+function sum(){
+  var _sum = 0;
+  for(var i =0; i<arguments.length; i++){
+    document.write(i + ':' + arguments[i] + '</br>');
+    _sum += arguments[i];
   }
-  return value;
+  return _sum;
 }
-alert(boolean(0,1,2,3));
+document.write(sum(1,2,3,4));
