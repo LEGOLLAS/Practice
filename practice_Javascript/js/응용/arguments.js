@@ -4,6 +4,6 @@ function sum(){
     document.write(i + ':' + arguments[i] + '</br>');
     _sum += arguments[i];
   }
-  return _sum;
+  return '총 합계는 : ' + _sum;
 }
 document.write(sum(1,2,3,4));
