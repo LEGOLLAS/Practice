@@ -1,3 +1,5 @@
+//생성자 함수 new 사용하기
+
 function person(name){
   this.name = name;
   this.introduce = function(){
